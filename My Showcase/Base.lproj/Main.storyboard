@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hkO-WN-teq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -33,6 +33,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="hkO-WN-teq" kind="showDetail" identifier="login" id="HrF-0L-Ltg"/>
+                        <segue destination="Zve-So-A8C" kind="show" identifier="loggedIn" id="fve-n7-wUx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -49,7 +53,7 @@
                     <view key="view" contentMode="scaleToFill" id="gct-cc-20R">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vaj-BB-gtb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -105,6 +109,9 @@
                                                                 <state key="normal" title="FACEBOOK SIGNUP">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="facebookLoginTapped:" destination="hkO-WN-teq" eventType="touchUpInside" id="Cau-28-CVY"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -140,6 +147,9 @@
                                                         <state key="normal" title="Email Signup">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="emailBtnTapped:" destination="hkO-WN-teq" eventType="touchUpInside" id="tIK-1J-1u8"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Signup" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocx-Ov-KJ7">
                                                         <rect key="frame" x="8" y="8" width="568" height="30"/>
@@ -224,7 +234,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="Zve-So-A8C" kind="show" id="AhW-Vp-NN0"/>
+                                                            <action selector="emailBtnTapped:" destination="hkO-WN-teq" eventType="touchUpInside" id="MFu-5k-B2I"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -295,10 +305,18 @@
                             <constraint firstAttribute="trailing" secondItem="1zu-LN-P4A" secondAttribute="trailing" id="rgN-nw-fQh"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="szi-iD-wu8" id="vIA-eO-KgD"/>
+                        <outlet property="passwordField" destination="7ML-XZ-ECq" id="rN7-Sb-vZ8"/>
+                        <segue destination="Zve-So-A8C" kind="show" identifier="loggedIn" id="Uug-j0-cdO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bj4-ye-uyz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1093" y="-125"/>
+            <point key="canvasLocation" x="1115" y="235"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Uug-j0-cdO"/>
+    </inferredMetricsTieBreakers>
 </document>

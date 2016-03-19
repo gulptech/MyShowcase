@@ -21,5 +21,14 @@ class ViewController: UIViewController {
     }
 
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) != nil {
+            self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
+        } else {
+            self.performSegueWithIdentifier(SEGUE_LOGIN, sender: nil)
+        }
+    }
+    
 }
 

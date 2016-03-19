@@ -14,6 +14,7 @@
 		01B193921C9DA68A0081F114 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01B193901C9DA68A0081F114 /* LaunchScreen.storyboard */; };
 		01B1939D1C9DAEA50081F114 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B1939C1C9DAEA50081F114 /* LoginViewController.swift */; };
 		01B1939F1C9DAEBF0081F114 /* AuthorizedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B1939E1C9DAEBF0081F114 /* AuthorizedViewController.swift */; };
+		01EC88561C9DEB81004C8B72 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC88551C9DEB81004C8B72 /* DataService.swift */; };
 		01FB4D5D1C9DCFB000640C42 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FB4D5C1C9DCFB000640C42 /* MaterialView.swift */; };
 		01FB4D601C9DCFFC00640C42 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FB4D5F1C9DCFFC00640C42 /* Constants.swift */; };
 		01FB4D621C9DDA9A00640C42 /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FB4D611C9DDA9A00640C42 /* MaterialTextField.swift */; };
@@ -37,6 +38,7 @@
 		01B193A51C9DAF500081F114 /* NotoSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		01B193A61C9DAF500081F114 /* NotoSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Italic.ttf"; sourceTree = "<group>"; };
 		01B193A71C9DAF500081F114 /* NotoSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Regular.ttf"; sourceTree = "<group>"; };
+		01EC88551C9DEB81004C8B72 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		01FB4D5C1C9DCFB000640C42 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		01FB4D5F1C9DCFFC00640C42 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		01FB4D611C9DDA9A00640C42 /* MaterialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 		01B193861C9DA68A0081F114 /* My Showcase */ = {
 			isa = PBXGroup;
 			children = (
+				01EC88541C9DEB6F004C8B72 /* Service */,
 				01FB4D5E1C9DCFEA00640C42 /* Util */,
 				01B193A01C9DAF2B0081F114 /* Resources */,
 				01B1939B1C9DAE750081F114 /* Controller */,
@@ -147,6 +150,14 @@
 				01B193A71C9DAF500081F114 /* NotoSans-Regular.ttf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		01EC88541C9DEB6F004C8B72 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				01EC88551C9DEB81004C8B72 /* DataService.swift */,
+			);
+			name = Service;
 			sourceTree = "<group>";
 		};
 		01FB4D5E1C9DCFEA00640C42 /* Util */ = {
@@ -289,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01EC88561C9DEB81004C8B72 /* DataService.swift in Sources */,
 				01B1939D1C9DAEA50081F114 /* LoginViewController.swift in Sources */,
 				01B1938A1C9DA68A0081F114 /* ViewController.swift in Sources */,
 				01FB4D641C9DDC0800640C42 /* MaterialButton.swift in Sources */,
