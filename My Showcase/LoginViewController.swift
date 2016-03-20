@@ -61,7 +61,9 @@ class LoginViewController: UIViewController {
                     }
                 } else {
                     //print(authData.uid)
-                    //NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKeyPath: KEY_UID)
+                    let user = ["provider": authData.provider!]
+                    DataService.ds.createFirebaseUser(authData.uid, user: user)
+                    NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKeyPath: KEY_UID)
                     self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
                 }
             })
@@ -89,9 +91,41 @@ class LoginViewController: UIViewController {
                 if error != nil {
                     print("Error Creating account: \(error.code)")
                 } else {
-                    NSUserDefaults.standardUserDefaults().setValue(authData[KEY_UID], forKeyPath: KEY_UID)
-                    self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
-                    //print("Successfully created user account with uid: \(KEY_UID)")
+                    DataService.ds.REF_BASE.authUser(email, password: pwd, withCompletionBlock: { error, authData in
+                        if error != nil {
+                            if let errorCode = FAuthenticationError(rawValue: error.code) {
+                                var errorMsg = ""
+                                switch errorCode {
+                                case .InvalidPassword:
+                                    errorMsg = "Invalid Password"
+                                case .InvalidEmail:
+                                    errorMsg = "Invalid Email Address"
+                                case .UserDoesNotExist:
+                                    errorMsg = "User Does not Exist"
+                                case .NetworkError:
+                                    errorMsg = "Network Error"
+                                case .LimitsExceeded:
+                                    errorMsg = "Limit Exceeded, please try again"
+                                default:
+                                    errorMsg = "\(errorCode)"
+                                }
+                                self.showErrorAlert("Error Logging In", msg: errorMsg)
+                            }
+
+                        } else {
+                            let user = ["provider": authData.provider!]
+                            DataService.ds.createFirebaseUser(authData.uid, user: user)
+                            NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKeyPath: KEY_UID)
+                            self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
+                        }
+                    })
+//                    DataService.ds.REF_BASE.authUser(email, password: pwd, withCompletionBlock: { a-error, a-authData in
+//                        if a-error != nil {
+//                            NSUserDefaults.standardUserDefaults().setValue(authData[KEY_UID], forKeyPath: KEY_UID)
+//                            self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
+//                            //print("Successfully created user account with uid: \(KEY_UID)")
+//                        }
+//                    })
                 }
             })
         }
@@ -133,7 +167,12 @@ class LoginViewController: UIViewController {
                     if error != nil {
                         print("Login failed. \(error)")
                     } else {
-                        print("Logged in! \(authData)")
+                        //print("Logged in! \(authData)")
+                        
+                        // Create Firebase User
+                        let user = ["provider": authData.provider!]
+                        DataService.ds.createFirebaseUser(authData.uid, user: user)
+                        
                         NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKeyPath: KEY_UID)
                         self.performSegueWithIdentifier("loggedIn", sender: nil)
                     }
